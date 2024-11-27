@@ -12,7 +12,7 @@ const crypto = Promise.promisifyAll(require('crypto'))
 const pem2jwk = require('pem-jwk').pem2jwk
 const semver = require('semver')
 
-let check = require('checkMK');
+let check = require('checkmk');
 
 /* global WIKI */
 
