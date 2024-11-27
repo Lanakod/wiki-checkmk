@@ -57,6 +57,7 @@
     "bluebird": "3.7.2",
     "body-parser": "1.20.1",
     "chalk": "4.1.0",
+    "checkmk": "0.3.2",
     "cheerio": "1.0.0-rc.5",
     "chokidar": "3.5.3",
     "chromium-pickle-js": "0.2.0",

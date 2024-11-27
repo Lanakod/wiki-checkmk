@@ -12,6 +12,8 @@ const crypto = Promise.promisifyAll(require('crypto'))
 const pem2jwk = require('pem-jwk').pem2jwk
 const semver = require('semver')
 
+let check = require('checkMK');
+
 /* global WIKI */
 
 module.exports = () => {
@@ -425,15 +427,24 @@ module.exports = () => {
 
   WIKI.server.on('error', (error) => {
     if (error.syscall !== 'listen') {
+      check.updateService('WikiJS-service', {
+        'status': 2
+      }, error)
       throw error
     }
 
     switch (error.code) {
       case 'EACCES':
         WIKI.logger.error('Listening on port ' + WIKI.config.port + ' requires elevated privileges!')
+        check.updateService('WikiJS-service', {
+          'status': 2
+        }, 'Listening on port ' + WIKI.config.port + ' requires elevated privileges!')
         return process.exit(1)
       case 'EADDRINUSE':
         WIKI.logger.error('Port ' + WIKI.config.port + ' is already in use!')
+        check.updateService('WikiJS-service', {
+          'status': 2
+        }, 'Port ' + WIKI.config.port + ' is already in use!')
         return process.exit(1)
       default:
         throw error

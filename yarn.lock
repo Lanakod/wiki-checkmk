@@ -6436,6 +6436,11 @@ check-types@^8.0.3:
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-8.0.3.tgz#3356cca19c889544f2d7a95ed49ce508a0ecf552"
   integrity sha512-YpeKZngUmG65rLudJ4taU7VLkOCTMhNl/u4ctNC56LQS/zJTyNH0Lrtwm1tfTsbLlwvlfsA2d1c8vCf/Kh2KwQ==
 
+checkmk@0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/checkmk/-/checkmk-0.3.2.tgz#85fbe59f5891f5eb427f5afe55ff111d9392b4bc"
+  integrity sha512-1Uf0iCirCmwADvTXjp+Kokg0ETeAS14VT/GxyJrOTU+e/qcDFEmwL26ldJySHiF2S8rTJz2yRwSLq+UiO+B34A==
+
 cheerio-select-tmp@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/cheerio-select-tmp/-/cheerio-select-tmp-0.1.1.tgz#55bbef02a4771710195ad736d5e346763ca4e646"

@@ -28,6 +28,23 @@ global.WIKI = WIKI
 WIKI.configSvc.init()
 
 // ----------------------------------------
+// Init checkmk
+// ----------------------------------------
+
+let check = require('checkMK');
+let options = { host: '0.0.0.0', port: 6556, encoding : 'utf8', exclusive: true }
+check.createServer(options);
+check.addService('WikiJS-service', 
+  {
+    name: 'WikiJS',
+    ok: 'WikiJS is Ok',
+    warning: 'WikiJS warning',
+    critical: 'WikiJS critical error',
+    counters: {
+      'status': '0;1;2;0;2'
+    }
+  })
+// ----------------------------------------
 // Init Logger
 // ----------------------------------------
 
@@ -44,13 +61,22 @@ WIKI.kernel.init()
 // ----------------------------------------
 
 process.on('SIGTERM', () => {
+  check.updateService('WikiJS-service', {
+    'status': 2
+  }, "WikiJS shutting down")
   WIKI.kernel.shutdown()
 })
 process.on('SIGINT', () => {
+  check.updateService('WikiJS-service', {
+    'status': 2
+  }, "WikiJS shutting down")
   WIKI.kernel.shutdown()
 })
 process.on('message', (msg) => {
   if (msg === 'shutdown') {
+    check.updateService('WikiJS-service', {
+      'status': 2
+    }, "WikiJS shutting down")
     WIKI.kernel.shutdown()
   }
 })
