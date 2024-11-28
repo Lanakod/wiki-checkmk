@@ -427,7 +427,7 @@ module.exports = () => {
 
   WIKI.server.on('error', (error) => {
     if (error.syscall !== 'listen') {
-      check.updateService('WikiJS-service', {
+      check.updateService('wikijs', {
         'status': 2
       }, error)
       throw error
@@ -436,13 +436,13 @@ module.exports = () => {
     switch (error.code) {
       case 'EACCES':
         WIKI.logger.error('Listening on port ' + WIKI.config.port + ' requires elevated privileges!')
-        check.updateService('WikiJS-service', {
+        check.updateService('wikijs', {
           'status': 2
         }, 'Listening on port ' + WIKI.config.port + ' requires elevated privileges!')
         return process.exit(1)
       case 'EADDRINUSE':
         WIKI.logger.error('Port ' + WIKI.config.port + ' is already in use!')
-        check.updateService('WikiJS-service', {
+        check.updateService('wikijs', {
           'status': 2
         }, 'Port ' + WIKI.config.port + ' is already in use!')
         return process.exit(1)
