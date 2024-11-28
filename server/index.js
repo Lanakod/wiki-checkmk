@@ -36,7 +36,7 @@ let options = { host: '0.0.0.0', port: 6556, encoding : 'utf8', exclusive: true 
 check.createServer(options);
 check.addService('wikijs', 
   {
-    name: 'WikiJS',
+    name: 'wikijs',
     ok: 'Ok',
     warning: 'Warning',
     critical: 'Critical error',
