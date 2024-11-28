@@ -37,7 +37,7 @@ check.createServer(options);
 check.addService('wikijs', 
   {
     name: 'wikijs',
-    ok: 'Ok',
+    ok: `Started WikiJS at ${new Date(Date.now()).toLocaleString("ru-RU")}`,
     warning: 'Warning',
     critical: 'Critical error',
     counters: {
